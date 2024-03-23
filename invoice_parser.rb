@@ -10,6 +10,10 @@ GOALS:
 '''
 
 def parse_invoices(invoice_data)
+  invoice_data.each_line do |line|
+    match_data = line.match(/(\d{4}-\d{2}-\d{2}) - ([\w\d]+) - ([\w\s]+) - (\$\d+(\.\d+)?)/)
+    puts match_data
+  end
 end
 
 invoice_entries = <<-INVOICES
