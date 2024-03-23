@@ -10,9 +10,9 @@ GOALS:
 '''
 
 def parse_invoices(invoice_data)
-  invoice_data.each_line do |line|
-    match_data = line.match(/(\d{4}-\d{2}-\d{2}) - ([\w\d]+) - ([\w\s]+) - (\$\d+(\.\d+)?)/)
-    puts match_data
+  invoice_data.each_line do |invoice|
+    match_data = invoice.match(/(\d{4}-\d{2}-\d{2}) - ([\w\d]+) - ([\w\s]+) - (\$\d+(\.\d+)?)/)
+    puts "Date: #{match_data[1]}, Invoice Number: #{match_data[2]}, Client: #{match_data[3]}, Amount: #{match_data[4]}"
   end
 end
 
@@ -23,3 +23,10 @@ invoice_entries = <<-INVOICES
 INVOICES
 
 parse_invoices(invoice_entries)
+
+'''
+RESULT(S):
+Date: 2023-03-01, Invoice Number: INV001, Client: Acme Corp, Amount: $1000
+Date: 2023-03-02, Invoice Number: INV002, Client: Beta LLC, Amount: $2050
+Date: 2023-03-03, Invoice Number: INV003, Client: Gamma Inc, Amount: $3500
+'''
